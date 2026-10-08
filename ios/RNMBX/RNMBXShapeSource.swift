@@ -29,6 +29,12 @@ public class RNMBXShapeSource : RNMBXSource {
 
   @objc public var shape : String? {
     didSet {
+      // Reproducer instrumentation: how long the setter holds the calling thread per push.
+      let started = CFAbsoluteTimeGetCurrent()
+      defer {
+        let elapsedMs = (CFAbsoluteTimeGetCurrent() - started) * 1000
+        NSLog("[ShapeSourceRepro] shape didSet mainThread=%d bytes=%d took %.1f ms", Thread.isMainThread ? 1 : 0, shape?.utf8.count ?? 0, elapsedMs)
+      }
       shapeAnimator?.unsubscribe(consumer: self)
       shapeAnimator = nil
       

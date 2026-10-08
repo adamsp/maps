@@ -35,6 +35,7 @@ import * as Web from '../examples/Web';
 // MISC
 import BugReportExample from '../examples/BugReportExample';
 import BugReportExampleTS from '../examples/BugReportExampleTS';
+import ShapeSourceLargeShapeRepro from '../examples/ShapeSourceLargeShapeRepro';
 import CompilerTestExample from '../examples/CompilerTestExample';
 // Cache Management
 import * as CacheOffline from '../examples/CacheOffline';
@@ -289,6 +290,10 @@ const Examples = new ExampleGroup('React Native Mapbox', [
   new MostRecentExampleItem(),
   new ExampleItem('Bug Report Template', BugReportPage(BugReportExample)),
   new ExampleItem('Bug Report Template TS', BugReportPage(BugReportExampleTS)),
+  new ExampleItem(
+    'ShapeSource large shape (main thread)',
+    BugReportPage(ShapeSourceLargeShapeRepro),
+  ),
   new ExampleItem('React Compiler Test', BugReportPage(CompilerTestExample)),
   exampleGroup(V10),
   new ExampleGroup('V11', [
